@@ -156,11 +156,11 @@ RUN yarn global add bower@x.x.x
 Sorry, but I don't believe in "latest" things :grin:. No, seriously. Be aware of the version you're working with in order to avoid headaches. Always. 🦌
 
 
-[2.13.2-node_8.0.0-file]: https://github.com/sergiolepore/docker-ember/tree/master/dockerfiles/8/2.13.2-node_8.0.0/Dockerfile
-[2.13.2-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/master/dockerfiles/6/2.13.2-node_6.10.3/Dockerfile
-[2.13.1-node_7.10.0-file]: https://github.com/sergiolepore/docker-ember/tree/master/dockerfiles/7/2.13.1-node_7.10.0/Dockerfile
-[2.13.1-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/master/dockerfiles/6/2.13.1-node_6.10.3/Dockerfile
-[2.12.3-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/master/dockerfiles/6/2.12.3-node_6.10.3/Dockerfile
+[2.13.2-node_8.0.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.2-node_8.0.0/Dockerfile
+[2.13.2-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.2-node_6.10.3/Dockerfile
+[2.13.1-node_7.10.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.1-node_7.10.0/Dockerfile
+[2.13.1-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.1-node_6.10.3/Dockerfile
+[2.12.3-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.12.3-node_6.10.3/Dockerfile
 
 [ember-js-url]: https://www.emberjs.com/
 [debian-jessie-url]: https://www.debian.org/releases/jessie/
