@@ -51,6 +51,7 @@ All perfectly versioned, up-to-date and working.
 
 ### Usage
 
+* `docker pull sergiolepore/ember-cli:x.x.x-node_x.x.x`
 * Container working directory is `/myapp`, so you might want to mount a volume there (or override it)
 * Port `49153` is exposed (livereload)
 * Port `4200` is exposed (app)
@@ -144,7 +145,7 @@ Sorry, but when a major version of Node.js stops getting updates, I stop support
 Bower is now an [optional dependency since Ember-CLI 2.13][bower-ember-drop-support-url], so I decided to exclude it from my v2.13+ images. If you still need it, I recommend you to create your own custom image:
 
 ```Dockerfile
-FROM sergiolepore/docker-ember:x.x.x-node_x.x.x
+FROM sergiolepore/ember-cli:x.x.x-node_x.x.x
 
 RUN yarn global add bower@x.x.x
 
