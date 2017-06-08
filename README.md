@@ -144,7 +144,7 @@ Sorry, but when a major version of Node.js stops getting updates, I stop support
 Bower is now an [optional dependency since Ember-CLI 2.13][bower-ember-drop-support-url], so I decided to exclude it from my v2.13+ images. If you still need it, I recommend you to create your own custom image:
 
 ```Dockerfile
-FROM sergiolepore/ember-cli:x.x.x-node_x.x.x
+FROM sergiolepore/docker-ember:x.x.x-node_x.x.x
 
 RUN yarn global add bower@x.x.x
 
