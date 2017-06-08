@@ -21,8 +21,8 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v2.13.2
 
-* **w/Node.js v8.0.0** | [Dockerfile][2.13.2-node_8.0.0-file]
-  * `Yarn v0.24.6`
+* **w/Node.js v7.10.0** | [Dockerfile][2.13.2-node_7.10.0-file]
+  * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
 * **w/Node.js v6.10.3 (LTS)** | [Dockerfile][2.13.2-node_6.10.3-file]
@@ -62,12 +62,12 @@ All perfectly versioned, up-to-date and working.
 # ember blueprints
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.13.2 \
+  sergiolepore/ember-cli:2.13.2-node_7.10.0 \
   ember init
 
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.13.2 \
+  sergiolepore/ember-cli:2.13.2-node_7.10.0 \
   ember g route hamsters
 ```
 
@@ -75,7 +75,7 @@ $ docker run -it --rm \
 # yarn
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.13.2 \
+  sergiolepore/ember-cli:2.13.2-node_7.10.0 \
   yarn add something@1.2.3
 ```
 
@@ -85,7 +85,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 49153:49153 \
-  sergiolepore/ember-cli:2.13.2
+  sergiolepore/ember-cli:2.13.2-node_7.10.0
 ```
 
 ```bash
@@ -94,7 +94,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 49153:49153 \
-  sergiolepore/ember-cli:2.13.2 \
+  sergiolepore/ember-cli:2.13.2-node_7.10.0 \
   bash
 
 root@container-id:/myapp# ember init
@@ -110,7 +110,7 @@ root@container-id:/myapp# ember server
 ```yaml
 services:
   emberapp:
-    image: sergiolepore/ember-cli:2.13.2
+    image: sergiolepore/ember-cli:2.13.2-node_7.10.0
     ports:
       - "4200:4200"
       - "49153:49153"
@@ -156,7 +156,7 @@ RUN yarn global add bower@x.x.x
 Sorry, but I don't believe in "latest" things :grin:. No, seriously. Be aware of the version you're working with in order to avoid headaches. Always. 🦌
 
 
-[2.13.2-node_8.0.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.2-node_8.0.0/Dockerfile
+[2.13.2-node_7.10.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.2-node_7.10.0/Dockerfile
 [2.13.2-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.2-node_6.10.3/Dockerfile
 [2.13.1-node_7.10.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.1-node_7.10.0/Dockerfile
 [2.13.1-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.1-node_6.10.3/Dockerfile
