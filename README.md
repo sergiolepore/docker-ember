@@ -49,7 +49,7 @@ All perfectly versioned, up-to-date and working.
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
 
-### Usage
+## Usage
 
 * `docker pull sergiolepore/ember-cli:x.x.x-node_x.x.x`
 * Container working directory is `/myapp`, so you might want to mount a volume there (or override it)
@@ -57,7 +57,7 @@ All perfectly versioned, up-to-date and working.
 * Port `4200` is exposed (app)
 * `ember server` is the default command to be run when executing the image
 
-#### `docker run` examples
+### `docker run` examples
 
 ```bash
 # ember blueprints
@@ -104,7 +104,7 @@ root@container-id:/myapp# yarn add something@1.2.3
 root@container-id:/myapp# ember server
 ```
 
-#### `docker-compose` examples
+### `docker-compose` examples
 
 * A `docker-compose.yml` file in `/my/project/directory`
 
@@ -128,7 +128,7 @@ $ docker-compose up
 ```
 
 
-### FAQ
+## FAQ
 
 #### How do you keep up with new versions?
 
