@@ -26,12 +26,22 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
+* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.14.2-node_6.11.2-file]
+  * `docker pull sergiolepore/ember-cli:2.14.2-node_6.11.2`
+  * `Yarn v0.27.5`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.7.0`
 
 ### Ember-CLI v2.14.1
 
 * **w/Node.js v8.1.2** | [Dockerfile][2.14.1-node_8.1.2-file]
   * `docker pull sergiolepore/ember-cli:2.14.1-node_8.1.2`
   * `Yarn v0.24.4`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.7.0`
+* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.14.1-node_6.11.2-file]
+  * `docker pull sergiolepore/ember-cli:2.14.1-node_6.11.2`
+  * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
 
@@ -42,12 +52,22 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
+* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.14.0-node_6.11.2-file]
+  * `docker pull sergiolepore/ember-cli:2.14.0-node_6.11.2`
+  * `Yarn v0.27.5`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.7.0`
 
 ### Ember-CLI v2.13.3
 
 * **w/Node.js v8.1.2** | [Dockerfile][2.13.3-node_8.1.2-file]
   * `docker pull sergiolepore/ember-cli:2.13.3-node_8.1.2`
   * `Yarn v0.24.4`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.7.0`
+* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.13.3-node_6.11.2-file]
+  * `docker pull sergiolepore/ember-cli:2.13.3-node_6.11.2`
+  * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
 
@@ -208,9 +228,13 @@ Sorry, but I don't believe in "latest" things :grin:. No, seriously. Be aware of
 Working on it. Stay tuned.
 
 [2.14.2-node_8.2.1-file]: https://github.com/sergiolepore/docker-ember/tree/2.14.2-node_8.2.1/Dockerfile
+[2.14.2-node_6.11.2-file]: https://github.com/sergiolepore/docker-ember/tree/2.14.2-node_6.11.2/Dockerfile
 [2.14.1-node_8.1.2-file]: https://github.com/sergiolepore/docker-ember/tree/2.14.1-node_8.1.2/Dockerfile
+[2.14.1-node_6.11.2-file]: https://github.com/sergiolepore/docker-ember/tree/2.14.1-node_6.11.2/Dockerfile
 [2.14.0-node_8.1.2-file]: https://github.com/sergiolepore/docker-ember/tree/2.14.0-node_8.1.2/Dockerfile
+[2.14.0-node_6.11.2-file]: https://github.com/sergiolepore/docker-ember/tree/2.14.0-node_6.11.2/Dockerfile
 [2.13.3-node_8.1.2-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.3-node_8.1.2/Dockerfile
+[2.13.3-node_6.11.2-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.3-node_6.11.2/Dockerfile
 [2.13.2-node_7.10.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.2-node_7.10.0/Dockerfile
 [2.13.2-node_6.10.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.2-node_6.10.3/Dockerfile
 [2.13.1-node_7.10.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.13.1-node_7.10.0/Dockerfile
