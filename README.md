@@ -165,7 +165,7 @@ $ docker run -it \
   sergiolepore/ember-cli:2.14.2-node_8.2.1 \
   bash
 
-root@container-id:/myapp# ember init
+root@container-id:/myapp# ember init --yarn
 root@container-id:/myapp# ember g route hamsters
 root@container-id:/myapp# yarn add something@1.2.3
 root@container-id:/myapp# ember server
@@ -187,7 +187,7 @@ services:
 ```
 
 ```bash
-$ docker-compose run --rm emberapp ember init
+$ docker-compose run --rm emberapp ember init --yarn
 ```
 
 ```bash
