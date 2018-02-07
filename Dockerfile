@@ -100,3 +100,4 @@ EXPOSE 4200 7020
 # Default command to be run
 #============================================
 CMD ["ember", "server"]
+
