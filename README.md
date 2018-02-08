@@ -20,6 +20,21 @@ All perfectly versioned, up-to-date and working.
 
 ## Dockerfiles and tags
 
+### Ember-CLI v2.16.2
+
+* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.16.2-node_8.9.4-file]
+  * `docker pull sergiolepore/ember-cli:2.16.2-node_8.9.4`
+  * `Yarn v1.3.2`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v6.12.3 (LTS)** | [Dockerfile][2.16.2-node_6.12.3-file]
+  * `docker pull sergiolepore/ember-cli:2.16.2-node_6.12.3`
+  * `Yarn v1.3.2`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+
 ### Ember-CLI v2.16.1
 
 * **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.16.1-node_8.9.4-file]
