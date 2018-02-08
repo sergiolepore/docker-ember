@@ -20,6 +20,21 @@ All perfectly versioned, up-to-date and working.
 
 ## Dockerfiles and tags
 
+### Ember-CLI v2.16.0
+
+* **w/Node.js v8.4.0** | [Dockerfile][2.16.0-node_8.4.0-file]
+  * `docker pull sergiolepore/ember-cli:2.16.0-node_8.4.0`
+  * `Yarn v0.27.5`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v6.11.3 (LTS)** | [Dockerfile][2.15.1-node_6.11.3-file]
+  * `docker pull sergiolepore/ember-cli:2.16.0-node_6.11.3`
+  * `Yarn v0.27.5`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+
 ### Ember-CLI v2.15.1
 
 * **w/Node.js v8.4.0** | [Dockerfile][2.15.1-node_8.4.0-file]
@@ -141,7 +156,7 @@ All perfectly versioned, up-to-date and working.
 
 * `docker pull sergiolepore/ember-cli:x.x.x-node_x.x.x`
 * Container working directory is `/myapp`, so you might want to mount a volume there (or override it)
-* Port `49153` is exposed (livereload)
+* Port `7020` is exposed (livereload)
 * Port `4200` is exposed (app)
 * `ember server` is the default command to be run when executing the image
 
@@ -151,12 +166,12 @@ All perfectly versioned, up-to-date and working.
 # ember blueprints
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.15.1-node_8.4.0 \
+  sergiolepore/ember-cli:2.16.0-node_8.4.0 \
   ember init --yarn
 
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.15.1-node_8.4.0 \
+  sergiolepore/ember-cli:2.16.0-node_8.4.0 \
   ember g route hamsters
 ```
 
@@ -164,7 +179,7 @@ $ docker run -it --rm \
 # yarn
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.15.1-node_8.4.0 \
+  sergiolepore/ember-cli:2.16.0-node_8.4.0 \
   yarn add something@1.2.3
 ```
 
@@ -174,7 +189,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 49153:49153 \
-  sergiolepore/ember-cli:2.15.1-node_8.4.0
+  sergiolepore/ember-cli:2.16.0-node_8.4.0
 ```
 
 ```bash
@@ -183,7 +198,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 49153:49153 \
-  sergiolepore/ember-cli:2.15.1-node_8.4.0 \
+  sergiolepore/ember-cli:2.16.0-node_8.4.0 \
   ember server --watcher polling
 ```
 
@@ -193,7 +208,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 49153:49153 \
-  sergiolepore/ember-cli:2.15.1-node_8.4.0 \
+  sergiolepore/ember-cli:2.16.0-node_8.4.0 \
   bash
 
 root@container-id:/myapp# ember init --yarn
@@ -209,7 +224,7 @@ root@container-id:/myapp# ember server
 ```yaml
 services:
   emberapp:
-    image: sergiolepore/ember-cli:2.15.1-node_8.4.0
+    image: sergiolepore/ember-cli:2.16.0-node_8.4.0
     ports:
       - "4200:4200"
       - "49153:49153"
@@ -258,6 +273,8 @@ Sorry, but I don't believe in "latest" things :grin:. No, seriously. Be aware of
 
 Working on it. Stay tuned.
 
+[2.16.0-node_8.4.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.16.0-node_8.4.0/Dockerfile
+[2.16.0-node_6.11.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.16.0-node_6.11.3/Dockerfile
 [2.15.1-node_8.4.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.15.1-node_8.4.0/Dockerfile
 [2.15.1-node_6.11.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.15.1-node_6.11.3/Dockerfile
 [2.15.0-node_8.4.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.15.0-node_8.4.0/Dockerfile
