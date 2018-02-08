@@ -303,6 +303,8 @@ Sorry, but I don't believe in "latest" things :grin:. No, seriously. Be aware of
 
 Working on it. Stay tuned.
 
+[2.16.2-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.16.2-node_8.9.4/Dockerfile
+[2.16.2-node_6.12.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.16.2-node_6.12.3/Dockerfile 
 [2.16.1-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.16.1-node_8.9.4/Dockerfile
 [2.16.1-node_6.12.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.16.1-node_6.12.3/Dockerfile 
 [2.16.0-node_8.4.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.16.0-node_8.4.0/Dockerfile
