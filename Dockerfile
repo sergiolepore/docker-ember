@@ -75,7 +75,7 @@ RUN rm -rf /var/lib/apt/lists/* \
 #     Docker image.
 #============================================
 RUN yarn global add phantomjs-prebuilt@2.1.15
-RUN yarn global add ember-cli@2.16.0
+RUN yarn global add ember-cli@2.16.1
 
 #============================================
 # Default working directory
