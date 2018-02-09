@@ -20,6 +20,21 @@ All perfectly versioned, up-to-date and working.
 
 ## Dockerfiles and tags
 
+### Ember-CLI v2.17.2
+
+* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.17.2-node_8.9.4-file]
+  * `docker pull sergiolepore/ember-cli:2.17.2-node_8.9.4`
+  * `Yarn v1.3.2`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v6.12.3 (LTS)** | [Dockerfile][2.17.2-node_6.12.3-file]
+  * `docker pull sergiolepore/ember-cli:2.17.2-node_6.12.3`
+  * `Yarn v1.3.2`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+
 ### Ember-CLI v2.17.1
 
 * **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.17.1-node_8.9.4-file]
@@ -333,6 +348,8 @@ Sorry, but I don't believe in "latest" things :grin:. No, seriously. Be aware of
 
 Working on it. Stay tuned.
 
+[2.17.2-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.17.2-node_8.9.4/Dockerfile
+[2.17.2-node_6.12.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.17.2-node_6.12.3/Dockerfile 
 [2.17.1-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.17.1-node_8.9.4/Dockerfile
 [2.17.1-node_6.12.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.17.1-node_6.12.3/Dockerfile 
 [2.17.0-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.17.0-node_8.9.4/Dockerfile
