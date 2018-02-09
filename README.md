@@ -1,10 +1,43 @@
 # Ember-CLI + Node.js (Current & LTS) + Yarn
 
-## A Docker image for creating ambitious web applications :hamster:
+**A Docker image for creating ambitious web applications :hamster:**
 
 ---
 
-## Image
+# Table of Contents
+
+- [Ember-CLI + Node.js (Current & LTS) + Yarn](#ember-cli-nodejs-current-lts-yarn)
+- [Table of Contents](#table-of-contents)
+  - [Image Contents](#image-contents)
+  - [Dockerfiles and tags](#dockerfiles-and-tags)
+    - [Ember-CLI v2.17.2](#ember-cli-v2172)
+    - [Ember-CLI v2.17.1](#ember-cli-v2171)
+    - [Ember-CLI v2.17.0](#ember-cli-v2170)
+    - [Ember-CLI v2.16.2](#ember-cli-v2162)
+    - [Ember-CLI v2.16.1](#ember-cli-v2161)
+    - [Ember-CLI v2.16.0](#ember-cli-v2160)
+    - [Ember-CLI v2.15.1](#ember-cli-v2151)
+    - [Ember-CLI v2.15.0](#ember-cli-v2150)
+    - [Ember-CLI v2.14.2](#ember-cli-v2142)
+    - [Ember-CLI v2.14.1](#ember-cli-v2141)
+    - [Ember-CLI v2.14.0](#ember-cli-v2140)
+    - [Ember-CLI v2.13.3](#ember-cli-v2133)
+    - [Ember-CLI v2.13.2](#ember-cli-v2132)
+    - [Ember-CLI v2.13.1](#ember-cli-v2131)
+    - [Ember-CLI v2.12.3](#ember-cli-v2123)
+  - [Usage](#usage)
+    - [`docker run` examples](#docker-run-examples)
+    - [`docker-compose` examples](#docker-compose-examples)
+  - [FAQ](#faq)
+    - [How do you keep up with new versions?](#how-do-you-keep-up-with-new-versions)
+    - [What happens with outdated Node.js versions between LTS releases?](#what-happens-with-outdated-nodejs-versions-between-lts-releases)
+    - [You said this image has everything I need to work with Ember.js, but where's Bower?](#you-said-this-image-has-everything-i-need-to-work-with-emberjs-but-wheres-bower)
+    - [Where's the `latest` tag?](#wheres-the-latest-tag)
+    - [Debian Jessie is way too heavy, where's the Alpine version?](#debian-jessie-is-way-too-heavy-wheres-the-alpine-version)
+    - [Since 2.16.0, `ember test -s` ends up showing a Chrome error regarding some SUID sandbox. How do I make it work?](#since-2160-ember-test--s-ends-up-showing-a-chrome-error-regarding-some-suid-sandbox-how-do-i-make-it-work)
+    - [I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. Since 2.16.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?](#i-have-a-custom-dockerfile-based-on-yours-and-my-user-is-no-longer-root-because-of-reason-x-since-2160-ember-test--s-ends-up-showing-an-operation-not-permitted-error-how-do-i-make-it-work)
+
+## Image Contents
 
 This image has everything you need to work with [Ember.js][ember-js-url]:
 
@@ -318,17 +351,17 @@ $ docker-compose up
 
 ## FAQ
 
-#### How do you keep up with new versions?
+### How do you keep up with new versions?
 
 Here's what I've been doing: each time a [final release of Ember-CLI gets published][ember-cli-releases-url], I check for the latest `LTS` and `Current` Node.js versions and I generate a new `Dockerfile` based on that. This ensures there will always be an up-to-date image containing the latest security patches and bugfixes from both projects. Alongside those changes, I update all dependencies to their latest version.
 
 I'll try to keep parity between Node.js and Ember.js LTS versions for as long as possible (Ember 2.12.x - Node 6.x, for example).
 
-#### What happens with outdated Node.js versions between LTS releases?
+### What happens with outdated Node.js versions between LTS releases?
 
 Sorry, but when a major version of Node.js stops getting updates, I stop supporting it as well. If you think you're stuck on one of those versions, please consider upgrading to, at least, the next available LTS.
 
-#### You said this image has everything I need to work with Ember.js, but where's Bower?
+### You said this image has everything I need to work with Ember.js, but where's Bower?
 
 Bower is now an [optional dependency since Ember-CLI 2.13][bower-ember-drop-support-url], so I decided to exclude it from my v2.13+ images. If you still need it, I recommend you to create your own custom image:
 
@@ -340,13 +373,52 @@ RUN yarn global add bower@x.x.x
 ### ...
 ```
 
-#### Where's the `latest` tag?
+### Where's the `latest` tag?
 
 Sorry, but I don't believe in "latest" things :grin:. No, seriously. Be aware of the version you're working with in order to avoid headaches. Always. 🦌
 
-#### Debian Jessie is way too heavy, where's the Alpine version?
+### Debian Jessie is way too heavy, where's the Alpine version?
 
 Working on it. Stay tuned.
+
+### Since 2.16.0, `ember test -s` ends up showing a Chrome error regarding some SUID sandbox. How do I make it work?
+
+This is one of those things that I really HATE about the Chrome integration. 
+
+In order to fix it, you'll have to edit your `testem.js` file and configure a new argument, `--no-sandbox`, for your `mode: 'dev'`. A lot can be written about the implications, pros & cons of this, but I thought that this "solution" is the only one worth implementing. If you open the `Dockerfile`, you'll notice that there's a patch that adds `--no-sandbox` directly to the system so you don't have to add it to `testem.js`, BUT it's being ignored for some reason. If I figure out how to make it work without having to edit the Test'em file, I'll ship the patch into a **new Dockerfile**. I will not update the old ones.
+
+*"But my Test'em file can only have ONE custom config and it's set to `ci`! I cannot add `dev` without losing `ci`!"* - You, probably.
+
+This is an issue ONLY for ember-cli versions prior to `3.0.0`. The new Test'em allows you to have different modes with their custom, isolated args. If you are using the old Test'em, you'll have to remove the mode key entirely and just use the array of args for the `Chrome` key, like so:
+
+```js
+/* eslint-env node */
+module.exports = {
+  // ...etc
+  browser_args: {
+    Chrome: [
+      '--no-sandbox', // new arg for 'dev' mode. Below are the default args for 'ci'
+      '--disable-gpu',
+      '--headless',
+      '--remote-debugging-port=0',
+      '--window-size=1440,900'
+    ]
+  }
+};
+
+```
+
+### I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. Since 2.16.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?
+
+I am so, so sorry. Making Chrome work on Docker as a non-root user is an absolute pain in the head. Seriously. You'll have to pass a HUGE [seccomp profile][docker-docs-seccomp] to your container with **EVERY SINGLE SYSCALL** Chrome will or might perform, otherwise it will explode in your face with "operation not permitted". [There's a popular seccomp profile][jess-frazelle-chrome-seccomp-profile] for Chrome if you want to try it. I did. No luck :skull:
+
+
+
+
+
+
+
+
 
 [2.17.2-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.17.2-node_8.9.4/Dockerfile
 [2.17.2-node_6.12.3-file]: https://github.com/sergiolepore/docker-ember/tree/2.17.2-node_6.12.3/Dockerfile 
@@ -388,3 +460,5 @@ Working on it. Stay tuned.
 [ember-blog-chrome-url]: https://www.emberjs.com/blog/2017/09/01/ember-2-15-released.html#toc_changes-in-ember-cli-2-15
 [ember-cli-releases-url]: https://github.com/ember-cli/ember-cli/releases
 [bower-ember-drop-support-url]: https://www.emberjs.com/blog/2017/04/29/ember-2-13-released.html#toc_other-notable-changes
+[docker-docs-seccomp]: https://docs.docker.com/engine/security/seccomp/
+[jess-frazelle-chrome-seccomp-profile]: https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json
