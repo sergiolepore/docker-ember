@@ -10,6 +10,7 @@ A Docker image for creating ambitious web applications :hamster:
 - [Table of Contents](#table-of-contents)
   - [Image Contents](#image-contents)
   - [Dockerfiles and tags](#dockerfiles-and-tags)
+    - [Ember-CLI v2.18.1](#ember-cli-v2181)
     - [Ember-CLI v2.18.0](#ember-cli-v2180)
     - [Ember-CLI v2.17.2](#ember-cli-v2172)
     - [Ember-CLI v2.17.1](#ember-cli-v2171)
@@ -53,6 +54,21 @@ This image has everything you need to work with [Ember.js][ember-js-url]:
 All perfectly versioned, up-to-date and working.
 
 ## Dockerfiles and tags
+
+### Ember-CLI v2.18.1
+
+* **w/Node.js v9.5.0** | [Dockerfile][2.18.1-node_9.5.0-file]
+  * `docker pull sergiolepore/ember-cli:2.18.1-node_9.5.0`
+  * `Yarn v1.3.2`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.18.1-node_8.9.4-file]
+  * `docker pull sergiolepore/ember-cli:2.18.1-node_8.9.4`
+  * `Yarn v1.3.2`
+  * `PhantomJS v2.1.14`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
 
 ### Ember-CLI v2.18.0
 
@@ -290,12 +306,12 @@ All perfectly versioned, up-to-date and working.
 # ember blueprints
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.18.0-node_9.5.0 \
+  sergiolepore/ember-cli:2.18.1-node_9.5.0 \
   ember init --yarn
 
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.18.0-node_9.5.0 \
+  sergiolepore/ember-cli:2.18.1-node_9.5.0 \
   ember g route hamsters
 ```
 
@@ -303,7 +319,7 @@ $ docker run -it --rm \
 # yarn
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.18.0-node_9.5.0 \
+  sergiolepore/ember-cli:2.18.1-node_9.5.0 \
   yarn add something@1.2.3
 ```
 
@@ -313,7 +329,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:2.18.0-node_9.5.0
+  sergiolepore/ember-cli:2.18.1-node_9.5.0
 ```
 
 ```bash
@@ -322,7 +338,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:2.18.0-node_9.5.0 \
+  sergiolepore/ember-cli:2.18.1-node_9.5.0 \
   ember server --watcher polling
 ```
 
@@ -332,7 +348,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:2.18.0-node_9.5.0 \
+  sergiolepore/ember-cli:2.18.1-node_9.5.0 \
   bash
 
 root@container-id:/myapp# ember init --yarn
@@ -348,7 +364,7 @@ root@container-id:/myapp# ember server
 ```yaml
 services:
   emberapp:
-    image: sergiolepore/ember-cli:2.18.0-node_9.5.0
+    image: sergiolepore/ember-cli:2.18.1-node_9.5.0
     ports:
       - "4200:4200"
       - "7020:7020"
@@ -434,7 +450,8 @@ I am so, so sorry. Making Chrome work on Docker as a non-root user is an absolut
 
 
 
-
+[2.18.1-node_9.5.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.1-node_9.5.0/Dockerfile 
+[2.18.1-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.1-node_8.9.4/Dockerfile
 [2.18.0-node_9.5.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.0-node_9.5.0/Dockerfile 
 [2.18.0-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.0-node_8.9.4/Dockerfile
 [2.17.2-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.17.2-node_8.9.4/Dockerfile
