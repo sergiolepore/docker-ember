@@ -10,6 +10,7 @@ A Docker image for creating ambitious Ember applications :hamster:
 - [Table of Contents](#table-of-contents)
   - [Image Contents](#image-contents)
   - [Dockerfiles and tags](#dockerfiles-and-tags)
+    - [Ember-CLI v3.0.0](#ember-cli-v300)
     - [Ember-CLI v2.18.2](#ember-cli-v2182)
     - [Ember-CLI v2.18.1](#ember-cli-v2181)
     - [Ember-CLI v2.18.0](#ember-cli-v2180)
@@ -38,6 +39,8 @@ A Docker image for creating ambitious Ember applications :hamster:
     - [Where's the `latest` tag?](#wheres-the-latest-tag)
     - [Debian Jessie is way too heavy, where's the Alpine version?](#debian-jessie-is-way-too-heavy-wheres-the-alpine-version)
     - [Since 2.16.0, `ember test -s` ends up showing a Chrome error regarding some SUID sandbox. How do I make it work?](#since-2160-ember-test--s-ends-up-showing-a-chrome-error-regarding-some-suid-sandbox-how-do-i-make-it-work)
+      - [3.0.0 < Ember-CLI >= 2.16.0](#300-ember-cli-2160)
+      - [Ember-CLI >= 3.0.0](#ember-cli-300)
     - [I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. Since 2.16.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?](#i-have-a-custom-dockerfile-based-on-yours-and-my-user-is-no-longer-root-because-of-reason-x-since-2160-ember-test--s-ends-up-showing-an-operation-not-permitted-error-how-do-i-make-it-work)
 
 ## Image Contents
@@ -47,7 +50,7 @@ This image has everything you need to work with [Ember.js][ember-js-url]:
 * [Debian Jessie][debian-jessie-url]
 * [Node.js][node-js-url]
 * [Yarn][yarn-url] (npm's still there, don't worry)
-* [PhantomJS][phantomjs-url]
+* [PhantomJS][phantomjs-url] (for Ember-CLI < 3.0.0, [why?][ember-blog-phantom-ember3])
 * [Watchman][watchman-url]
 * [Google Chrome][chrome-url] ([why?][ember-blog-chrome-url])
 * And, of course, [Ember-CLI][ember-js-url]
@@ -55,6 +58,19 @@ This image has everything you need to work with [Ember.js][ember-js-url]:
 All perfectly versioned, up-to-date and working.
 
 ## Dockerfiles and tags
+
+### Ember-CLI v3.0.0
+
+* **w/Node.js v9.5.0** | [Dockerfile][3.0.0-node_9.5.0-file]
+  * `docker pull sergiolepore/ember-cli:3.0.0-node_9.5.0`
+  * `Yarn v1.3.2`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][3.0.0-node_8.9.4-file]
+  * `docker pull sergiolepore/ember-cli:3.0.0-node_8.9.4`
+  * `Yarn v1.3.2`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
 
 ### Ember-CLI v2.18.2
 
@@ -322,12 +338,12 @@ All perfectly versioned, up-to-date and working.
 # ember blueprints
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.18.2-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
   ember init --yarn
 
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.18.2-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
   ember g route hamsters
 ```
 
@@ -335,7 +351,7 @@ $ docker run -it --rm \
 # yarn
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:2.18.2-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
   yarn add something@1.2.3
 ```
 
@@ -345,7 +361,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:2.18.2-node_9.5.0
+  sergiolepore/ember-cli:3.0.0-node_9.5.0
 ```
 
 ```bash
@@ -354,7 +370,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:2.18.2-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
   ember server --watcher polling
 ```
 
@@ -364,7 +380,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:2.18.2-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
   bash
 
 root@container-id:/myapp# ember init --yarn
@@ -380,7 +396,7 @@ root@container-id:/myapp# ember server
 ```yaml
 services:
   emberapp:
-    image: sergiolepore/ember-cli:2.18.2-node_9.5.0
+    image: sergiolepore/ember-cli:3.0.0-node_9.5.0
     ports:
       - "4200:4200"
       - "7020:7020"
@@ -435,9 +451,13 @@ This is one of those things that I really HATE about the Chrome integration.
 
 In order to fix it, you'll have to edit your `testem.js` file and configure a new argument, `--no-sandbox`, for your `mode: 'dev'`. A lot can be written about the implications, pros & cons of this, but I thought that this "solution" is the only one worth implementing. If you open the `Dockerfile`, you'll notice that there's a patch that adds `--no-sandbox` directly to the system so you don't have to add it to `testem.js`, BUT it's being ignored for some reason. If I figure out how to make it work without having to edit the Test'em file, I'll ship the patch into a **new Dockerfile**. I will not update the old ones.
 
-*"But my Test'em file can only have ONE custom config and it's set to `ci`! I cannot add `dev` without losing `ci`!"* - You, probably.
+*"But my Test'em file (pre Ember 3) can only have ONE custom config and it's set to `ci`! I cannot add `dev` without losing `ci`!"* - You, probably.
 
-This is an issue ONLY for ember-cli versions prior to `3.0.0`. The new Test'em allows you to have different modes with their custom, isolated args. If you are using the old Test'em, you'll have to remove the mode key entirely and just use the array of args for the `Chrome` key, like so:
+This is an issue ONLY for Ember-CLI versions prior to `3.0.0`. The new Test'em allows you to have different modes with their custom, isolated args. If you are using the old Test'em, you'll have to remove the mode key entirely and just use the array of args for the `Chrome` key.
+
+Below are the workarounds for pre and post Ember-CLI 3.
+
+#### 3.0.0 < Ember-CLI >= 2.16.0
 
 ```js
 /* eslint-env node */
@@ -456,6 +476,32 @@ module.exports = {
 
 ```
 
+#### Ember-CLI >= 3.0.0
+
+```js
+module.exports = {
+  // ...etc
+  browser_args: {
+    Chrome: {
+      // common args for CI and Dev
+      all: [
+        '--disable-gpu',
+        '--headless',
+        '--remote-debugging-port=0',
+        '--window-size=1440,900'
+      ],
+      // extra required arg for Dev (because it's running inside a container)
+      dev: '--no-sandbox',
+      // the default --no-sandbox for Travis CI (that's running inside a container)
+      ci: [
+        // --no-sandbox is needed when running Chrome inside a container
+        process.env.TRAVIS ? '--no-sandbox' : null,
+      ].filter(Boolean)
+    }
+  }
+}
+```
+
 ### I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. Since 2.16.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?
 
 I am so, so sorry. Making Chrome work on Docker as a non-root user is an absolute pain in the head. Seriously. You'll have to pass a HUGE [seccomp profile][docker-docs-seccomp] to your container with **EVERY SINGLE SYSCALL** Chrome will or might perform, otherwise it will explode in your face with "operation not permitted". [There's a popular seccomp profile][jess-frazelle-chrome-seccomp-profile] for Chrome if you want to try it. I did. No luck :skull:
@@ -464,7 +510,8 @@ I am so, so sorry. Making Chrome work on Docker as a non-root user is an absolut
 
 
 
-
+[3.0.0-node_9.5.0-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.0-node_9.5.0/Dockerfile 
+[3.0.0-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.0-node_8.9.4/Dockerfile
 [2.18.2-node_9.5.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.2-node_9.5.0/Dockerfile 
 [2.18.2-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.2-node_8.9.4/Dockerfile
 [2.18.1-node_9.5.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.1-node_9.5.0/Dockerfile 
@@ -513,3 +560,4 @@ I am so, so sorry. Making Chrome work on Docker as a non-root user is an absolut
 [bower-ember-drop-support-url]: https://www.emberjs.com/blog/2017/04/29/ember-2-13-released.html#toc_other-notable-changes
 [docker-docs-seccomp]: https://docs.docker.com/engine/security/seccomp/
 [jess-frazelle-chrome-seccomp-profile]: https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json
+[ember-blog-phantom-ember3]: https://emberjs.com/blog/2018/02/14/ember-3-0-released.html#toc_browser-support-in-3-0
