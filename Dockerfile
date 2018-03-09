@@ -28,16 +28,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
       --no-install-recommends
 
 #============================================
-# Crappy Chrome hacks
-#============================================
-# Allows Google Chrome to run as root.
-# Otherwise it needs a HUGE seccomp profile
-# if executed as non root.
-#============================================
-COPY wrap_chrome_binary /opt/bin/wrap_chrome_binary
-RUN /opt/bin/wrap_chrome_binary
-
-#============================================
 # Watchman
 #============================================
 # The default file watcher.
@@ -68,6 +58,11 @@ RUN rm -rf /var/lib/apt/lists/* \
 RUN yarn global add ember-cli@3.0.0
 
 #============================================
+# Run the whole thing as non-root from now on
+#============================================
+USER node
+
+#============================================
 # Default working directory
 #============================================
 WORKDIR /myapp
@@ -83,8 +78,12 @@ WORKDIR /myapp
 #     coming from the server indicating that
 #     something has changed and the browser
 #     needs a refresh.
+# - 7357: TestEm. You can connect to this
+#     port with your preferred browser and
+#     tests will run there automatically
+#     (besides Google Chrome),
 #============================================
-EXPOSE 4200 7020
+EXPOSE 4200 7020 7357
 
 #============================================
 # Default command to be run
