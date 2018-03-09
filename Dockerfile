@@ -81,7 +81,7 @@ WORKDIR /myapp
 # - 7357: TestEm. You can connect to this
 #     port with your preferred browser and
 #     tests will run there automatically
-#     (besides Google Chrome),
+#     (besides Google Chrome), 
 #============================================
 EXPOSE 4200 7020 7357
 
