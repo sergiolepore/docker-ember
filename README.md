@@ -42,6 +42,7 @@ A Docker image for creating ambitious Ember applications :hamster:
       - [3.0.0 < Ember-CLI >= 2.16.0](#300-ember-cli-2160)
       - [Ember-CLI >= 3.0.0](#ember-cli-300)
     - [I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. Since 2.16.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?](#i-have-a-custom-dockerfile-based-on-yours-and-my-user-is-no-longer-root-because-of-reason-x-since-2160-ember-test--s-ends-up-showing-an-operation-not-permitted-error-how-do-i-make-it-work)
+    - [❗ notes on image tag `3.0.0-node_9.5.0-experimental` ❗](#%E2%9D%97-notes-on-image-tag-300-node950-experimental-%E2%9D%97)
 
 ## Image Contents
 
@@ -61,6 +62,12 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v3.0.0
 
+* **w/Node.js v9.5.0 Experimental** | [Dockerfile][3.0.0-node_9.5.0-experimental-file]
+  * `docker pull sergiolepore/ember-cli:3.0.0-node_9.5.0-experimental`
+  * Contains exactly the same dependencies as `3.0.0-node_9.5.0`
+  * Now working as non-root
+  * Support for Google Chrome running as non-root
+  * All the goodies will be included in the next image tag
 * **w/Node.js v9.5.0** | [Dockerfile][3.0.0-node_9.5.0-file]
   * `docker pull sergiolepore/ember-cli:3.0.0-node_9.5.0`
   * `Yarn v1.3.2`
@@ -375,7 +382,7 @@ $ docker run -it \
 ```
 
 ```bash
-# bash shell
+# bash
 $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
@@ -451,7 +458,7 @@ This is one of those things that I really HATE about the Chrome integration.
 
 In order to fix it, you'll have to edit your `testem.js` file and configure a new argument, `--no-sandbox`, for your `mode: 'dev'`. A lot can be written about the implications, pros & cons of this, but I thought that this "solution" is the only one worth implementing. If you open the `Dockerfile`, you'll notice that there's a patch that adds `--no-sandbox` directly to the system so you don't have to add it to `testem.js`, BUT it's being ignored for some reason. If I figure out how to make it work without having to edit the Test'em file, I'll ship the patch into a **new Dockerfile**. I will not update the old ones.
 
-*"But my Test'em file (pre Ember 3) can only have ONE custom config and it's set to `ci`! I cannot add `dev` without losing `ci`!"* - You, probably.
+> *"But my Test'em file (pre Ember 3) can only have ONE custom config and it's set to `ci`! I cannot add `dev` without losing `ci`!"* - You, probably.
 
 This is an issue ONLY for Ember-CLI versions prior to `3.0.0`. The new Test'em allows you to have different modes with their custom, isolated args. If you are using the old Test'em, you'll have to remove the mode key entirely and just use the array of args for the `Chrome` key.
 
@@ -500,16 +507,28 @@ module.exports = {
     }
   }
 }
-```
+``` 
 
 ### I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. Since 2.16.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?
 
-I am so, so sorry. Making Chrome work on Docker as a non-root user is an absolute pain in the head. Seriously. You'll have to pass a HUGE [seccomp profile][docker-docs-seccomp] to your container with **EVERY SINGLE SYSCALL** Chrome will or might perform, otherwise it will explode in your face with "operation not permitted". [There's a popular seccomp profile][jess-frazelle-chrome-seccomp-profile] for Chrome if you want to try it. I did. No luck :skull:
+Before you proceed: there's a fix incoming for this issue. For the next release/tag, the container will work with a non-root user by default and Chrome will no longer bother you with errors. If you want to test this right now, you can pull `sergiolepore/ember-cli:3.0.0-node_9.5.0-experimental` and give it a try.
+
+Below are the notes for the pre `3.0.0-node_9.5.0-experimental-experimental` tag.
+
+---
+
+> I am so, so sorry. Making Chrome work on Docker as a non-root user is an absolute pain in the head. Seriously. You'll have to pass a HUGE [seccomp profile][docker-docs-seccomp] to your container with **EVERY SINGLE SYSCALL** Chrome will or might perform, otherwise it will explode in your face with "operation not permitted". [There's a popular seccomp profile][jess-frazelle-chrome-seccomp-profile] for Chrome if you want to try it. I did. No luck :skull:
+
+
+ ### ❗ notes on image tag `3.0.0-node_9.5.0-experimental` ❗
+
+ This new tag is finally working using a non-root user, and Chrome works too! You'll have to follow the instructions for the `SUID` error but, after that, everything will be working smoothly.
+
+ The next stable tag for this image will include the things from this experimental version.
 
 
 
-
-
+[3.0.0-node_9.5.0-experimental-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.0-node_9.5.0-experimental/Dockerfile 
 [3.0.0-node_9.5.0-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.0-node_9.5.0/Dockerfile 
 [3.0.0-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.0-node_8.9.4/Dockerfile
 [2.18.2-node_9.5.0-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.2-node_9.5.0/Dockerfile 
