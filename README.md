@@ -10,6 +10,7 @@ A Docker image for creating ambitious Ember applications :hamster:
 - [Table of Contents](#table-of-contents)
   - [Image Contents](#image-contents)
   - [Dockerfiles and tags](#dockerfiles-and-tags)
+    - [Ember-CLI v3.0.1](#ember-cli-v301)
     - [Ember-CLI v3.0.0](#ember-cli-v300)
     - [Ember-CLI v2.18.2](#ember-cli-v2182)
     - [Ember-CLI v2.18.1](#ember-cli-v2181)
@@ -41,8 +42,7 @@ A Docker image for creating ambitious Ember applications :hamster:
     - [Since 2.16.0, `ember test -s` ends up showing a Chrome error regarding some SUID sandbox. How do I make it work?](#since-2160-ember-test--s-ends-up-showing-a-chrome-error-regarding-some-suid-sandbox-how-do-i-make-it-work)
       - [3.0.0 < Ember-CLI >= 2.16.0](#300-ember-cli-2160)
       - [Ember-CLI >= 3.0.0](#ember-cli-300)
-    - [I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. Since 2.16.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?](#i-have-a-custom-dockerfile-based-on-yours-and-my-user-is-no-longer-root-because-of-reason-x-since-2160-ember-test--s-ends-up-showing-an-operation-not-permitted-error-how-do-i-make-it-work)
-    - [❗ notes on image tag `3.0.0-node_9.5.0-experimental` ❗](#%E2%9D%97-notes-on-image-tag-300-node950-experimental-%E2%9D%97)
+    - [I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. With tags between 2.16.0 and 3.0.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?](#i-have-a-custom-dockerfile-based-on-yours-and-my-user-is-no-longer-root-because-of-reason-x-with-tags-between-2160-and-300-ember-test--s-ends-up-showing-an-operation-not-permitted-error-how-do-i-make-it-work)
 
 ## Image Contents
 
@@ -59,6 +59,19 @@ This image has everything you need to work with [Ember.js][ember-js-url]:
 All perfectly versioned, up-to-date and working.
 
 ## Dockerfiles and tags
+
+### Ember-CLI v3.0.1
+
+* **w/Node.js v9.11.1** | [Dockerfile][3.0.1-node_9.11.1-file]
+  * `docker pull sergiolepore/ember-cli:3.0.1-node_9.11.1`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.0.1-node_8.11.1-file]
+  * `docker pull sergiolepore/ember-cli:3.0.1-node_8.11.1`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
 
 ### Ember-CLI v3.0.0
 
@@ -337,6 +350,7 @@ All perfectly versioned, up-to-date and working.
 * Container working directory is `/myapp`, so you might want to mount a volume there (or override it)
 * Port `7020` is exposed (livereload)
 * Port `4200` is exposed (app)
+* Port `7357` is exposed (TestEm)
 * `ember server` is the default command to be run when executing the image
 
 ### `docker run` examples
@@ -345,12 +359,12 @@ All perfectly versioned, up-to-date and working.
 # ember blueprints
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.1-node_9.11.1 \
   ember init --yarn
 
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.1-node_9.11.1 \
   ember g route hamsters
 ```
 
@@ -358,7 +372,7 @@ $ docker run -it --rm \
 # yarn
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.1-node_9.11.1 \
   yarn add something@1.2.3
 ```
 
@@ -368,7 +382,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.0.0-node_9.5.0
+  sergiolepore/ember-cli:3.0.1-node_9.11.1
 ```
 
 ```bash
@@ -377,7 +391,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.1-node_9.11.1 \
   ember server --watcher polling
 ```
 
@@ -387,7 +401,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.0.0-node_9.5.0 \
+  sergiolepore/ember-cli:3.0.1-node_9.11.1 \
   bash
 
 root@container-id:/myapp# ember init --yarn
@@ -403,10 +417,11 @@ root@container-id:/myapp# ember server
 ```yaml
 services:
   emberapp:
-    image: sergiolepore/ember-cli:3.0.0-node_9.5.0
+    image: sergiolepore/ember-cli:3.0.1-node_9.11.1
     ports:
       - "4200:4200"
       - "7020:7020"
+      - "7357:7357"
     volumes:
       - .:/myapp
 ```
@@ -509,25 +524,15 @@ module.exports = {
 }
 ``` 
 
-### I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. Since 2.16.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?
+### I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. With tags between 2.16.0 and 3.0.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?
 
-Before you proceed: there's a fix incoming for this issue. For the next release/tag, the container will work with a non-root user by default and Chrome will no longer bother you with errors. If you want to test this right now, you can pull `sergiolepore/ember-cli:3.0.0-node_9.5.0-experimental` and give it a try.
+Versions <= 3.0.0 of this image had a weird issue with Google Chrome and `USER` in the container. Using a non-root user required a HUGE [seccomp profile][docker-docs-seccomp] to be passed to your container with **EVERY SINGLE SYSCALL** Chrome will or might perform, otherwise it will explode in your face with "operation not permitted".
 
-Below are the notes for the pre `3.0.0-node_9.5.0-experimental-experimental` tag.
-
----
-
-> I am so, so sorry. Making Chrome work on Docker as a non-root user is an absolute pain in the head. Seriously. You'll have to pass a HUGE [seccomp profile][docker-docs-seccomp] to your container with **EVERY SINGLE SYSCALL** Chrome will or might perform, otherwise it will explode in your face with "operation not permitted". [There's a popular seccomp profile][jess-frazelle-chrome-seccomp-profile] for Chrome if you want to try it. I did. No luck :skull:
+Since `3.0.1`, the container runs as non-root and Chrome is finally working.
 
 
- ### ❗ notes on image tag `3.0.0-node_9.5.0-experimental` ❗
-
- This new tag is finally working using a non-root user, and Chrome works too! You'll have to follow the instructions for the `SUID` error but, after that, everything will be working smoothly.
-
- The next stable tag for this image will include the things from this experimental version.
-
-
-
+[3.0.1-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.1-node_9.11.1/Dockerfile
+[3.0.1-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.1-node_8.11.1/Dockerfile
 [3.0.0-node_9.5.0-experimental-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.0-node_9.5.0-experimental/Dockerfile 
 [3.0.0-node_9.5.0-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.0-node_9.5.0/Dockerfile 
 [3.0.0-node_8.9.4-file]: https://github.com/sergiolepore/docker-ember/tree/3.0.0-node_8.9.4/Dockerfile
