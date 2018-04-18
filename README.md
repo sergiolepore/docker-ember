@@ -10,6 +10,7 @@ A Docker image for creating ambitious Ember applications :hamster:
 - [Table of Contents](#table-of-contents)
   - [Image Contents](#image-contents)
   - [Dockerfiles and tags](#dockerfiles-and-tags)
+    - [Ember-CLI v3.1.2](#ember-cli-v312)
     - [Ember-CLI v3.1.1](#ember-cli-v311)
     - [Ember-CLI v3.1.0](#ember-cli-v310)
     - [Ember-CLI v3.0.4](#ember-cli-v304)
@@ -64,6 +65,19 @@ This image has everything you need to work with [Ember.js][ember-js-url]:
 All perfectly versioned, up-to-date and working.
 
 ## Dockerfiles and tags
+
+### Ember-CLI v3.1.2
+
+* **w/Node.js v9.11.1** | [Dockerfile][3.1.2-node_9.11.1-file]
+  * `docker pull sergiolepore/ember-cli:3.1.2-node_9.11.1`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.2-node_8.11.1-file]
+  * `docker pull sergiolepore/ember-cli:3.1.2-node_8.11.1`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable
 
 ### Ember-CLI v3.1.1
 
@@ -429,12 +443,12 @@ All perfectly versioned, up-to-date and working.
 # ember blueprints
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.1.1-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
   ember init --yarn
 
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.1.1-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
   ember g route hamsters
 ```
 
@@ -442,7 +456,7 @@ $ docker run -it --rm \
 # yarn
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.1.1-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
   yarn add something@1.2.3
 ```
 
@@ -452,7 +466,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.1.1-node_9.11.1
+  sergiolepore/ember-cli:3.1.2-node_9.11.1
 ```
 
 ```bash
@@ -461,7 +475,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.1.1-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
   ember server --watcher polling
 ```
 
@@ -471,7 +485,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.1.1-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
   bash
 
 node@container-id:/myapp# ember init --yarn
@@ -487,7 +501,7 @@ node@container-id:/myapp# ember server
 ```yaml
 services:
   emberapp:
-    image: sergiolepore/ember-cli:3.1.1-node_9.11.1
+    image: sergiolepore/ember-cli:3.1.2-node_9.11.1
     ports:
       - "4200:4200"
       - "7020:7020"
@@ -600,6 +614,8 @@ Versions <= 3.0.0 of this image had a weird issue with Google Chrome and `USER` 
 
 Since `3.0.1`, the container runs as non-root and Chrome is finally working.
 
+[3.1.2-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_9.11.1/Dockerfile
+[3.1.2-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_8.11.1/Dockerfile
 [3.1.1-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.1-node_9.11.1/Dockerfile
 [3.1.1-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.1-node_8.11.1/Dockerfile
 [3.1.0-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.0-node_9.11.1/Dockerfile
