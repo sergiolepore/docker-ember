@@ -44,7 +44,6 @@ A Docker image for creating ambitious Ember applications :hamster:
     - [What happens with outdated Node.js versions between LTS releases?](#what-happens-with-outdated-nodejs-versions-between-lts-releases)
     - [You said this image has everything I need to work with Ember.js, but where's Bower?](#you-said-this-image-has-everything-i-need-to-work-with-emberjs-but-wheres-bower)
     - [Where's the `latest` tag?](#wheres-the-latest-tag)
-    - [Debian Jessie is way too heavy, where's the Alpine version?](#debian-jessie-is-way-too-heavy-wheres-the-alpine-version)
     - [Since 2.16.0, `ember test -s` ends up showing a Chrome error regarding some SUID sandbox. How do I make it work?](#since-2160-ember-test--s-ends-up-showing-a-chrome-error-regarding-some-suid-sandbox-how-do-i-make-it-work)
       - [3.0.0 < Ember-CLI >= 2.16.0](#300-ember-cli-2160)
       - [Ember-CLI >= 3.0.0](#ember-cli-300)
@@ -54,7 +53,7 @@ A Docker image for creating ambitious Ember applications :hamster:
 
 This image has everything you need to work with [Ember.js][ember-js-url]:
 
-* [Debian Jessie][debian-jessie-url]
+* [Debian Jessie][debian-jessie-url] / [Alpine Linux][alpine-linux-url]
 * [Node.js][node-js-url]
 * [Yarn][yarn-url] (npm's still there, don't worry)
 * [PhantomJS][phantomjs-url] (for Ember-CLI < 3.0.0, [why?][ember-blog-phantom-ember3])
@@ -68,6 +67,8 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v3.1.2
 
+**Debian:**
+
 * **w/Node.js v9.11.1** | [Dockerfile][3.1.2-node_9.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.1.2-node_9.11.1`
   * `Yarn v1.5.1`
@@ -77,7 +78,20 @@ All perfectly versioned, up-to-date and working.
   * `docker pull sergiolepore/ember-cli:3.1.2-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
-  * `Google Chrome stable
+  * `Google Chrome stable`
+
+**Alpine:**
+
+* **w/Node.js v9.11.1** | [Dockerfile][3.1.2-node_9.11.1-alpine-file]
+  * `docker pull sergiolepore/ember-cli:3.1.2-node_9.11.1-alpine`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Chromium Edge`
+* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.2-node_8.11.1-alpine-file]
+  * `docker pull sergiolepore/ember-cli:3.1.2-node_8.11.1-alpine`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Chromium Edge`
 
 ### Ember-CLI v3.1.1
 
@@ -547,10 +561,6 @@ RUN yarn global add bower@x.x.x
 
 Sorry, but I don't believe in "latest" things :grin:. No, seriously. Be aware of the version you're working with in order to avoid headaches. Always. 🦌
 
-### Debian Jessie is way too heavy, where's the Alpine version?
-
-Working on it. Stay tuned.
-
 ### Since 2.16.0, `ember test -s` ends up showing a Chrome error regarding some SUID sandbox. How do I make it work?
 
 This is one of those things that I really HATE about the Chrome integration. 
@@ -608,6 +618,8 @@ module.exports = {
 }
 ``` 
 
+If you are using an Alpine version, replace all `"Chrome"` references with `"Chromium"`.
+
 ### I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. With tags between 2.16.0 and 3.0.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?
 
 Versions <= 3.0.0 of this image had a weird issue with Google Chrome and `USER` in the container. Using a non-root user required a HUGE [seccomp profile][docker-docs-seccomp] to be passed to your container with **EVERY SINGLE SYSCALL** Chrome will or might perform, otherwise it will explode in your face with "operation not permitted".
@@ -615,7 +627,9 @@ Versions <= 3.0.0 of this image had a weird issue with Google Chrome and `USER` 
 Since `3.0.1`, the container runs as non-root and Chrome is finally working.
 
 [3.1.2-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_9.11.1/Dockerfile
+[3.1.2-node_9.11.1-alpine-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_9.11.1-alpine/Dockerfile
 [3.1.2-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_8.11.1/Dockerfile
+[3.1.2-node_8.11.1-alpine-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_8.11.1-alpine/Dockerfile
 [3.1.1-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.1-node_9.11.1/Dockerfile
 [3.1.1-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.1-node_8.11.1/Dockerfile
 [3.1.0-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.0-node_9.11.1/Dockerfile
@@ -669,6 +683,7 @@ Since `3.0.1`, the container runs as non-root and Chrome is finally working.
 
 [ember-js-url]: https://www.emberjs.com/
 [debian-jessie-url]: https://www.debian.org/releases/jessie/
+[alpine-linux-url]: https://www.alpinelinux.org/
 [node-js-url]: https://nodejs.org/
 [yarn-url]: https://yarnpkg.com/
 [phantomjs-url]: http://phantomjs.org/
