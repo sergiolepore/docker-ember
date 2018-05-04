@@ -10,6 +10,7 @@ A Docker image for creating ambitious Ember applications :hamster:
 - [Table of Contents](#table-of-contents)
   - [Image Contents](#image-contents)
   - [Dockerfiles and tags](#dockerfiles-and-tags)
+    - [Ember-CLI v3.1.3](#ember-cli-v313)
     - [Ember-CLI v3.1.2](#ember-cli-v312)
     - [Ember-CLI v3.1.1](#ember-cli-v311)
     - [Ember-CLI v3.1.0](#ember-cli-v310)
@@ -42,12 +43,12 @@ A Docker image for creating ambitious Ember applications :hamster:
   - [FAQ](#faq)
     - [How do you keep up with new versions?](#how-do-you-keep-up-with-new-versions)
     - [What happens with outdated Node.js versions between LTS releases?](#what-happens-with-outdated-nodejs-versions-between-lts-releases)
-    - [You said this image has everything I need to work with Ember.js, but where's Bower?](#you-said-this-image-has-everything-i-need-to-work-with-emberjs-but-wheres-bower)
+    - [You said this image has everything I need to work with Ember.js, but where's Bower?](#you-said-this-image-has-everything-i-need-to-work-with-emberjs--but-wheres-bower)
     - [Where's the `latest` tag?](#wheres-the-latest-tag)
-    - [Since 2.16.0, `ember test -s` ends up showing a Chrome error regarding some SUID sandbox. How do I make it work?](#since-2160-ember-test--s-ends-up-showing-a-chrome-error-regarding-some-suid-sandbox-how-do-i-make-it-work)
+    - [Since 2.16.0, `ember test -s` ends up showing a Chrome error regarding some SUID sandbox. How do I make it work?](#since-2160--ember-test--s-ends-up-showing-a-chrome-error-regarding-some-suid-sandbox-how-do-i-make-it-work)
       - [3.0.0 < Ember-CLI >= 2.16.0](#300-ember-cli-2160)
       - [Ember-CLI >= 3.0.0](#ember-cli-300)
-    - [I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. With tags between 2.16.0 and 3.0.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?](#i-have-a-custom-dockerfile-based-on-yours-and-my-user-is-no-longer-root-because-of-reason-x-with-tags-between-2160-and-300-ember-test--s-ends-up-showing-an-operation-not-permitted-error-how-do-i-make-it-work)
+    - [I have a custom Dockerfile based on yours, and my `USER` is no longer root because of reason X. With tags between 2.16.0 and 3.0.0, `ember test -s` ends up showing an "operation not permitted" error. How do I make it work?](#i-have-a-custom-dockerfile-based-on-yours--and-my-user-is-no-longer-root-because-of-reason-x-with-tags-between-2160-and-300--ember-test--s-ends-up-showing-an-operation-not-permitted-error-how-do-i-make-it-work)
 
 ## Image Contents
 
@@ -64,6 +65,34 @@ This image has everything you need to work with [Ember.js][ember-js-url]:
 All perfectly versioned, up-to-date and working.
 
 ## Dockerfiles and tags
+
+### Ember-CLI v3.1.3
+
+**Debian:**
+
+* **w/Node.js v10.0.0** | [Dockerfile][3.1.3-node_10.0.0-file]
+  * `docker pull sergiolepore/ember-cli:3.1.3-node_10.0.0`
+  * `Yarn v1.6.0`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.3-node_8.11.1-file]
+  * `docker pull sergiolepore/ember-cli:3.1.3-node_8.11.1`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+
+**Alpine:**
+
+* **w/Node.js v10.0.0** | [Dockerfile][3.1.3-node_10.0.0-alpine-file]
+  * `docker pull sergiolepore/ember-cli:3.1.3-node_10.0.0-alpine`
+  * `Yarn v1.6.0`
+  * `Watchman v4.9.0`
+  * `Chromium Edge`
+* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.3-node_8.11.1-alpine-file]
+  * `docker pull sergiolepore/ember-cli:3.1.3-node_8.11.1-alpine`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Chromium Edge`
 
 ### Ember-CLI v3.1.2
 
@@ -457,12 +486,12 @@ All perfectly versioned, up-to-date and working.
 # ember blueprints
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.3-node_10.0.0 \
   ember init --yarn
 
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.3-node_10.0.0 \
   ember g route hamsters
 ```
 
@@ -470,7 +499,7 @@ $ docker run -it --rm \
 # yarn
 $ docker run -it --rm \
   -v /my/project/directory:/myapp \
-  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.3-node_10.0.0 \
   yarn add something@1.2.3
 ```
 
@@ -480,7 +509,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.1.2-node_9.11.1
+  sergiolepore/ember-cli:3.1.3-node_10.0.0
 ```
 
 ```bash
@@ -489,7 +518,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.3-node_10.0.0 \
   ember server --watcher polling
 ```
 
@@ -499,7 +528,7 @@ $ docker run -it \
   -v /my/project/directory:/myapp \
   -p 4200:4200 \
   -p 7020:7020 \
-  sergiolepore/ember-cli:3.1.2-node_9.11.1 \
+  sergiolepore/ember-cli:3.1.3-node_10.0.0 \
   bash
 
 node@container-id:/myapp# ember init --yarn
@@ -515,7 +544,7 @@ node@container-id:/myapp# ember server
 ```yaml
 services:
   emberapp:
-    image: sergiolepore/ember-cli:3.1.2-node_9.11.1
+    image: sergiolepore/ember-cli:3.1.3-node_10.0.0
     ports:
       - "4200:4200"
       - "7020:7020"
@@ -626,6 +655,10 @@ Versions <= 3.0.0 of this image had a weird issue with Google Chrome and `USER` 
 
 Since `3.0.1`, the container runs as non-root and Chrome is finally working.
 
+[3.1.3-node_10.0.0-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.3-node_10.0.0/Dockerfile
+[3.1.3-node_10.0.0-alpine-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.3-node_10.0.0-alpine/Dockerfile
+[3.1.3-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.3-node_8.11.1/Dockerfile
+[3.1.3-node_8.11.1-alpine-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.3-node_8.11.1-alpine/Dockerfile
 [3.1.2-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_9.11.1/Dockerfile
 [3.1.2-node_9.11.1-alpine-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_9.11.1-alpine/Dockerfile
 [3.1.2-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.2-node_8.11.1/Dockerfile
