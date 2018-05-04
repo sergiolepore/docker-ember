@@ -11,6 +11,7 @@ A Docker image for creating ambitious Ember applications :hamster:
   - [Image Contents](#image-contents)
   - [Dockerfiles and tags](#dockerfiles-and-tags)
     - [Ember-CLI v3.1.3](#ember-cli-v313)
+    - [Ember-CLI v2.18.2 (Ember LTS):](#ember-cli-v2182-ember-lts)
     - [Ember-CLI v3.1.2](#ember-cli-v312)
     - [Ember-CLI v3.1.1](#ember-cli-v311)
     - [Ember-CLI v3.1.0](#ember-cli-v310)
@@ -75,7 +76,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.6.0`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.3-node_8.11.1-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.1.3-node_8.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.1.3-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -88,8 +89,36 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.6.0`
   * `Watchman v4.9.0`
   * `Chromium Edge`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.3-node_8.11.1-alpine-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.1.3-node_8.11.1-alpine-file]
   * `docker pull sergiolepore/ember-cli:3.1.3-node_8.11.1-alpine`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Chromium Edge`
+
+### Ember-CLI v2.18.2 (Ember LTS):
+
+**Debian:**
+
+* **w/Node.js v9.11.1** | [Dockerfile][2.18.2-node_9.11.1-file]
+  * `docker pull sergiolepore/ember-cli:2.18.2-node_9.11.1`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][2.18.2-node_8.11.1-file]
+  * `docker pull sergiolepore/ember-cli:2.18.2-node_8.11.1`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Google Chrome stable`
+
+**Alpine:**
+
+* **w/Node.js v9.11.1** | [Dockerfile][2.18.2-node_9.11.1-alpine-file]
+  * `docker pull sergiolepore/ember-cli:2.18.2-node_9.11.1-alpine`
+  * `Yarn v1.5.1`
+  * `Watchman v4.9.0`
+  * `Chromium Edge`
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][2.18.2-node_8.11.1-alpine-file]
+  * `docker pull sergiolepore/ember-cli:2.18.2-node_8.11.1-alpine`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Chromium Edge`
@@ -103,7 +132,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.2-node_8.11.1-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.1.2-node_8.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.1.2-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -116,7 +145,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Chromium Edge`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.2-node_8.11.1-alpine-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.1.2-node_8.11.1-alpine-file]
   * `docker pull sergiolepore/ember-cli:3.1.2-node_8.11.1-alpine`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -129,7 +158,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.1-node_8.11.1-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.1.1-node_8.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.1.1-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -142,7 +171,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.1.0-node_8.11.1-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.1.0-node_8.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.1.0-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -155,7 +184,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.0.4-node_8.11.1-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.0.4-node_8.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.0.4-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -168,7 +197,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.0.3-node_8.11.1-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.0.3-node_8.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.0.3-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -181,7 +210,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.0.2-node_8.11.1-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.0.2-node_8.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.0.2-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -194,7 +223,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.11.1 (LTS)** | [Dockerfile][3.0.1-node_8.11.1-file]
+* **w/Node.js v8.11.1 (Node LTS)** | [Dockerfile][3.0.1-node_8.11.1-file]
   * `docker pull sergiolepore/ember-cli:3.0.1-node_8.11.1`
   * `Yarn v1.5.1`
   * `Watchman v4.9.0`
@@ -213,7 +242,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v1.3.2`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][3.0.0-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][3.0.0-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:3.0.0-node_8.9.4`
   * `Yarn v1.3.2`
   * `Watchman v4.9.0`
@@ -227,7 +256,7 @@ All perfectly versioned, up-to-date and working.
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.18.2-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][2.18.2-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:2.18.2-node_8.9.4`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
@@ -242,7 +271,7 @@ All perfectly versioned, up-to-date and working.
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.18.1-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][2.18.1-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:2.18.1-node_8.9.4`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
@@ -257,7 +286,7 @@ All perfectly versioned, up-to-date and working.
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.18.0-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][2.18.0-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:2.18.0-node_8.9.4`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
@@ -266,13 +295,13 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v2.17.2
 
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.17.2-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][2.17.2-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:2.17.2-node_8.9.4`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v6.12.3 (LTS)** | [Dockerfile][2.17.2-node_6.12.3-file]
+* **w/Node.js v6.12.3** | [Dockerfile][2.17.2-node_6.12.3-file]
   * `docker pull sergiolepore/ember-cli:2.17.2-node_6.12.3`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
@@ -281,13 +310,13 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v2.17.1
 
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.17.1-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][2.17.1-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:2.17.1-node_8.9.4`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v6.12.3 (LTS)** | [Dockerfile][2.17.1-node_6.12.3-file]
+* **w/Node.js v6.12.3** | [Dockerfile][2.17.1-node_6.12.3-file]
   * `docker pull sergiolepore/ember-cli:2.17.1-node_6.12.3`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
@@ -296,13 +325,13 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v2.17.0
 
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.17.0-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][2.17.0-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:2.17.0-node_8.9.4`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v6.12.3 (LTS)** | [Dockerfile][2.17.0-node_6.12.3-file]
+* **w/Node.js v6.12.3** | [Dockerfile][2.17.0-node_6.12.3-file]
   * `docker pull sergiolepore/ember-cli:2.17.0-node_6.12.3`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
@@ -311,13 +340,13 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v2.16.2
 
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.16.2-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][2.16.2-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:2.16.2-node_8.9.4`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v6.12.3 (LTS)** | [Dockerfile][2.16.2-node_6.12.3-file]
+* **w/Node.js v6.12.3** | [Dockerfile][2.16.2-node_6.12.3-file]
   * `docker pull sergiolepore/ember-cli:2.16.2-node_6.12.3`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
@@ -326,13 +355,13 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v2.16.1
 
-* **w/Node.js v8.9.4 (LTS)** | [Dockerfile][2.16.1-node_8.9.4-file]
+* **w/Node.js v8.9.4 (Node LTS)** | [Dockerfile][2.16.1-node_8.9.4-file]
   * `docker pull sergiolepore/ember-cli:2.16.1-node_8.9.4`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v6.12.3 (LTS)** | [Dockerfile][2.16.1-node_6.12.3-file]
+* **w/Node.js v6.12.3** | [Dockerfile][2.16.1-node_6.12.3-file]
   * `docker pull sergiolepore/ember-cli:2.16.1-node_6.12.3`
   * `Yarn v1.3.2`
   * `PhantomJS v2.1.14`
@@ -347,7 +376,7 @@ All perfectly versioned, up-to-date and working.
   * `PhantomJS v2.1.14`
   * `Watchman v4.9.0`
   * `Google Chrome stable`
-* **w/Node.js v6.11.3 (LTS)** | [Dockerfile][2.16.0-node_6.11.3-file]
+* **w/Node.js v6.11.3** | [Dockerfile][2.16.0-node_6.11.3-file]
   * `docker pull sergiolepore/ember-cli:2.16.0-node_6.11.3`
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
@@ -362,7 +391,7 @@ All perfectly versioned, up-to-date and working.
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
   * `Google Chrome stable`
-* **w/Node.js v6.11.3 (LTS)** | [Dockerfile][2.15.1-node_6.11.3-file]
+* **w/Node.js v6.11.3** | [Dockerfile][2.15.1-node_6.11.3-file]
   * `docker pull sergiolepore/ember-cli:2.15.1-node_6.11.3`
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
@@ -377,7 +406,7 @@ All perfectly versioned, up-to-date and working.
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
   * `Google Chrome stable`
-* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.15.0-node_6.11.2-file]
+* **w/Node.js v6.11.2** | [Dockerfile][2.15.0-node_6.11.2-file]
   * `docker pull sergiolepore/ember-cli:2.15.0-node_6.11.2`
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
@@ -391,7 +420,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
-* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.14.2-node_6.11.2-file]
+* **w/Node.js v6.11.2** | [Dockerfile][2.14.2-node_6.11.2-file]
   * `docker pull sergiolepore/ember-cli:2.14.2-node_6.11.2`
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
@@ -404,7 +433,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
-* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.14.1-node_6.11.2-file]
+* **w/Node.js v6.11.2** | [Dockerfile][2.14.1-node_6.11.2-file]
   * `docker pull sergiolepore/ember-cli:2.14.1-node_6.11.2`
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
@@ -417,7 +446,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
-* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.14.0-node_6.11.2-file]
+* **w/Node.js v6.11.2** | [Dockerfile][2.14.0-node_6.11.2-file]
   * `docker pull sergiolepore/ember-cli:2.14.0-node_6.11.2`
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
@@ -430,7 +459,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
-* **w/Node.js v6.11.2 (LTS)** | [Dockerfile][2.13.3-node_6.11.2-file]
+* **w/Node.js v6.11.2** | [Dockerfile][2.13.3-node_6.11.2-file]
   * `docker pull sergiolepore/ember-cli:2.13.3-node_6.11.2`
   * `Yarn v0.27.5`
   * `PhantomJS v2.1.14`
@@ -443,7 +472,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
-* **w/Node.js v6.10.3 (LTS)** | [Dockerfile][2.13.2-node_6.10.3-file]
+* **w/Node.js v6.10.3** | [Dockerfile][2.13.2-node_6.10.3-file]
   * `docker pull sergiolepore/ember-cli:2.13.2-node_6.10.3`
   * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
@@ -456,7 +485,7 @@ All perfectly versioned, up-to-date and working.
   * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
   * `Watchman v4.7.0`
-* **w/Node.js v6.10.3 (LTS)** | [Dockerfile][2.13.1-node_6.10.3-file]
+* **w/Node.js v6.10.3** | [Dockerfile][2.13.1-node_6.10.3-file]
   * `docker pull sergiolepore/ember-cli:2.13.1-node_6.10.3`
   * `Yarn v0.24.4`
   * `PhantomJS v2.1.14`
@@ -464,7 +493,7 @@ All perfectly versioned, up-to-date and working.
 
 ### Ember-CLI v2.12.3
 
-* **w/Node.js v6.10.3 (LTS)** | [Dockerfile][2.12.3-node_6.10.3-file]
+* **w/Node.js v6.10.3** | [Dockerfile][2.12.3-node_6.10.3-file]
   * `docker pull sergiolepore/ember-cli:2.12.3-node_6.10.3`
   * `Yarn v0.24.4`
   * `Bower v1.8.0`
@@ -655,6 +684,10 @@ Versions <= 3.0.0 of this image had a weird issue with Google Chrome and `USER` 
 
 Since `3.0.1`, the container runs as non-root and Chrome is finally working.
 
+[2.18.2-node_9.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.2-node_9.11.1/Dockerfile
+[2.18.2-node_9.11.1-alpine-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.2-node_9.11.1-alpine/Dockerfile
+[2.18.2-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.2-node_8.11.1/Dockerfile
+[2.18.2-node_8.11.1-alpine-file]: https://github.com/sergiolepore/docker-ember/tree/2.18.2-node_8.11.1-alpine/Dockerfile
 [3.1.3-node_10.0.0-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.3-node_10.0.0/Dockerfile
 [3.1.3-node_10.0.0-alpine-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.3-node_10.0.0-alpine/Dockerfile
 [3.1.3-node_8.11.1-file]: https://github.com/sergiolepore/docker-ember/tree/3.1.3-node_8.11.1/Dockerfile
